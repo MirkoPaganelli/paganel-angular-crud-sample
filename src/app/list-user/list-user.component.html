@@ -1,0 +1,35 @@
+<div class="row" style="padding:15px">
+
+<div class="col-md-7">
+  <h2> User Details</h2>
+ <button class="btn btn-danger" style="margin:5px" (click)="addUser()"> Add User</button> 
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users" >
+      <td class="hidden">{{user.id}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.email}}</td>
+      <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button>
+        <button class="btn btn-danger" (click)="editUser(user)" style="margin-left: 20px;"> Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="col-md-5" *ngIf="selectedUser">
+    <app-edit-user  [user]="selectedUser" (resetUser)="onResetForm()" > </app-edit-user>
+  </div>
+
+
+</div>
